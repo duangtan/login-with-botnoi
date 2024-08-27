@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <style>
+        /* สไตล์สำหรับปุ่มแบบ outline */
+        .custom_sign_in_button[data-theme="outline"] {
+            border: 2px solid #000; 
+            background-color: transparent; 
+            color: #000; 
+            padding: 10px 20px; 
+            font-size: 16px; 
+            cursor: pointer; 
+            border-radius: 5px; 
+            transition: background-color 0.3s ease; 
+        }
+        .custom_sign_in_button[data-theme="outline"]:hover {
+            background-color: #000; 
+            color: #fff; 
+        }
+    </style>
+</head>
+<body>
+    <div id="custom_sign_in" 
+        data-client_id="your-client-id"
+        data-login_uri="https://shimmering-cupcake-e46511.netlify.app/login"
+        data-auto_prompt="false">
+    </div>
+    <div class="custom_sign_in_button" 
+        data-callback="onSignInSuccess"
+        data-theme="outline" 
+        data-text="Sign in with Botnoi">
+    </div>
+
+    <!-- <script src="script.js" defer></script> -->
+    <script src="https://shimmering-cupcake-e46511.netlify.app/script.js" defer></script>
+</body>
+</html>

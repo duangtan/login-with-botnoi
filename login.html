@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <form id="loginForm">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // จำลองการเข้าสู่ระบบ
+            setTimeout(() => {
+                console.log('Sending authentication result...');
+                
+                // ส่งข้อมูลไปยังหน้าเว็บหลัก (โดเมน B)
+                if (window.opener) {
+                    window.opener.postMessage({
+                        status: 'success',
+                        userId: '12345'
+                    }, '*'); // ใช้ '*' เพื่อทดสอบ
+                } else {
+                    console.error('Window.opener is not available');
+                }
+                window.close(); // ปิดหน้าต่างล็อกอิน
+            }, 1000); // จำลองการทำงาน 1 วินาที
+        });
+    </script>
+</body>
+</html>
