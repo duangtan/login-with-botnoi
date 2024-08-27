@@ -23,6 +23,8 @@
     </style>
 </head>
 <body>
+
+    <!-- ใช้สำหรับเก็บข้อมูลสำหรับการเข้าสู่ระบบ  -->
     <div id="custom_sign_in" 
         data-client_id="your-client-id"
         data-login_uri="https://login-with-botnoi.netlify.app/login"
@@ -34,7 +36,37 @@
         data-text="Sign in with Botnoi">
     </div>
 
-    <!-- <script src="script.js" defer></script> -->
-    <script src="https://login-with-botnoi.netlify.app/script.js" defer></script>
+    <script src="script.js" defer></script>
+    <!-- <script src="https://login-with-botnoi.netlify.app/script.js" defer></script> -->
+    
+    <script>
+        // ฟังก์ชัน callback ที่จะถูกเรียกเมื่อเข้าสู่ระบบสำเร็จ
+        async function onSignInSuccess(data) {
+            try {
+                const result = await processLoginData({
+                    status: data.status,
+                });
+                console.log(result);
+                
+                if (result) {
+                    console.log("status",data.status);
+                    //window.location.href = "http://127.0.0.1:5500/client-test/home.html";
+                } else {
+                    alert("Login failed");
+                }
+            } catch (err) {
+                alert(`Error: ${err.message}`);
+            }
+        }
+
+        // ฟังก์ชันจัดการข้อมูลการเข้าสู่ระบบ
+        async function processLoginData(data) {
+            // การประมวลผลข้อมูลหรือการตรวจสอบในฝั่งไคลเอนต์
+            if (data.status) {
+                return true;
+            }
+            return false;
+        }
+    </script>
 </body>
 </html>
